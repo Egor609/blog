@@ -1,7 +1,6 @@
 const burger = document.getElementById('sidebarToggle');
 const sidebar = document.getElementById('sidebar');
 const page = document.getElementById('page');
-const body = document.body;
 
 burger.addEventListener('click', event => {
     if( body.classList.contains('show-sidebar') ) {
@@ -16,7 +15,7 @@ function showSidebar() {
     mask.classList.add('page__mask');
     mask.addEventListener('click', closeSidebar);
     page.appendChild(mask);
-    
+
     body.classList.add('show-sidebar');
 }
 

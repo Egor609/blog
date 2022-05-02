@@ -412,18 +412,6 @@ a:hover {
     .show-sidebar .page {
         position: relative;
     }
-
-    .show-sidebar .page:after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 100;
-    }
 }
 
 .page__title {
@@ -436,6 +424,19 @@ a:hover {
 
 .page__title--center {
     text-align: center;
+}
+
+@media (max-width: 991px) {
+    .page__mask {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
 }
 
 .header {
@@ -1939,6 +1940,11 @@ a:hover {
     z-index: 1010;
 }
 
+.modal.show {
+    display: -ms-flexbox;
+    display: flex;
+}
+
 .modal__content {
     width: 100%;
     max-width: 50rem;
@@ -1947,11 +1953,22 @@ a:hover {
     background-color: #f2f4f7;
     box-shadow: 0 10px 35px rgba(128, 128, 128, 0.25);
     border-radius: 0.5rem;
-    blur: 2.5rem;
+    opacity: 0;
+    -webkit-transform: translateY(-50px);
+    transform: translateY(-50px);
+    transition: opacity 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+    transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+    transition: transform 200ms ease-in-out, opacity 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
 }
 
 .modal__content--contact {
     padding-bottom: 2.5rem;
+}
+
+@media (max-width: 991px) {
+    .modal__content {
+        padding: 5rem 3rem 3rem;
+    }
 }
 
 .modal__close {
@@ -1983,10 +2000,6 @@ a:hover {
     color: #535353;
 }
 
-.modal__footer li {
-    margin: 0 0.5rem;
-}
-
 .modal__footer a {
     color: inherit;
     text-decoration: underline;
@@ -1994,6 +2007,39 @@ a:hover {
 
 .modal__footer a:hover {
     text-decoration: none;
+}
+
+@media (max-width: 575px) {
+    .modal__footer {
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+}
+
+.modal__footer-item-1,
+.modal__footer-item-2 {
+    margin: 0 0.5rem;
+}
+
+@media (max-width: 575px) {
+    .modal__footer-item-1,
+.modal__footer-item-2 {
+        margin: 0.3rem 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .modal__footer-item-1 {
+        -ms-flex-order: 2;
+        order: 2;
+    }
+}
+
+@media (max-width: 575px) {
+    .modal__footer-item-2 {
+        -ms-flex-order: 1;
+        order: 1;
+    }
 }
 
 .modal__video {
